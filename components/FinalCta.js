@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import { copy } from "@/lib/copy";
 import { ShieldCheck } from "lucide-react";
 
-// 👇 URL base del checkout (Hotmart). TODO: reemplazar por la URL real cuando exista
-// el producto en Hotmart (formato pay.hotmart.com/XXXXX). Mientras tanto es placeholder.
-const BASE_CHECKOUT_URL = "https://pay.hotmart.com/PLACEHOLDER-RECETARIO-MX";
+// URL real del checkout (Gumroad) — producto "Recetas que Sí Puedo Comer" ($5.65 USD ≈ $99 MXN).
+// `wanted=true` abre directo el formulario de compra.
+const BASE_CHECKOUT_URL = "https://murocraft6.gumroad.com/l/vwhns?wanted=true";
 
 export default function FinalCta() {
   const [checkoutUrl, setCheckoutUrl] = useState(BASE_CHECKOUT_URL);
@@ -103,6 +103,11 @@ export default function FinalCta() {
           <p className="text-[14px] md:text-[15px] font-medium text-gray-500">
             {finalCta.urgencyText}
           </p>
+          {finalCta.usdNote && (
+            <p className="text-[13px] md:text-[14px] text-gray-400 mt-1">
+              {finalCta.usdNote}
+            </p>
+          )}
         </div>
 
         <div className="w-full max-w-[500px] mt-6 mb-10">

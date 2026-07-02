@@ -31,6 +31,14 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{
             __html: `
               (function () {
+                // Captura temprana de src/fbclid antes de que el Meta Pixel limpie la URL
+                try {
+                  var _qp = new URLSearchParams(location.search);
+                  var _src = _qp.get("src");
+                  var _fbclid = _qp.get("fbclid");
+                  if (_src) localStorage.setItem("hotmart_src", _src);
+                  if (_fbclid) localStorage.setItem("hotmart_fbclid", _fbclid);
+                } catch (e) {}
                 function stripHash() {
                   if (location.hash) {
                     history.replaceState(null, "", location.pathname + location.search);

@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import { copy } from "@/lib/copy";
 
-// Misma lógica de checkout que FinalCta. TODO: reemplazar por la URL real de Hotmart.
-const BASE_CHECKOUT_URL = "https://pay.hotmart.com/PLACEHOLDER-RECETARIO-MX";
+// Misma lógica de checkout que FinalCta — URL real de Gumroad.
+const BASE_CHECKOUT_URL = "https://murocraft6.gumroad.com/l/vwhns?wanted=true";
 
 export default function Closing() {
   const [checkoutUrl, setCheckoutUrl] = useState(BASE_CHECKOUT_URL);
